@@ -1,17 +1,3 @@
-project/
-├── app.py                      # Streamlit web application
-├── predictor/
-│   ├── __init__.py
-│   ├── emotion_model.py       # Loads Hugging Face model and predicts emotions
-│   └── stress_mapper.py       # Maps emotion to stress score
-├── utils/
-│   ├── __init__.py
-│   └── mlflow_logger.py       # Utility for logging with MLflow
-├── data/
-│   └── diary_log.csv          # Stores diary predictions (tracked with DVC)
-├── requirements.txt           # Required dependencies
-└── README.md                  # Project documentation
-
 # README.md
 # 📘 Stress Detection from Diary Text
 
@@ -34,6 +20,24 @@ This project is a web application that predicts a user's emotional state from a 
 
 ---
 
+## 📁 Project Directory Structure
+
+``` bash
+project/
+├── app.py                      # Streamlit web application
+├── predictor/
+│   ├── __init__.py
+│   ├── emotion_model.py       # Loads Hugging Face model and predicts emotions
+│   └── stress_mapper.py       # Maps emotion to stress score
+├── utils/
+│   ├── __init__.py
+│   └── mlflow_logger.py       # Utility for logging with MLflow
+├── data/
+│   └── diary_log.csv          # Stores diary predictions (tracked with DVC)
+├── requirements.txt           # Required dependencies
+└── README.md                  # Project documentation
+```
+---
 ## 🛠 Installation & Run Instructions
 
 ### 1. Clone the project and set up the environment
