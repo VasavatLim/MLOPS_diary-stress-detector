@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/a0103/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/MLOPS/mlruns/826953352913710704/998d6db7050a4c33a3c3f5b69b37a94a/artifacts
+end_time: 1747309159196
+entry_point_name: ''
+experiment_id: '826953352913710704'
+lifecycle_stage: active
+run_id: 998d6db7050a4c33a3c3f5b69b37a94a
+run_name: worried-bird-128
+run_uuid: 998d6db7050a4c33a3c3f5b69b37a94a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747309159027
+status: 3
+tags: []
+user_id: a0103

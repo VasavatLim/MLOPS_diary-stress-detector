@@ -3,3 +3,5 @@ streamlit
 mlflow
 torch
 dvc
+matplotlib
+seaborn

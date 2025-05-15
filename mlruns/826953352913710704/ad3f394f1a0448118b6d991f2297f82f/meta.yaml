@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/a0103/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/MLOPS/mlruns/826953352913710704/ad3f394f1a0448118b6d991f2297f82f/artifacts
+end_time: 1747317564054
+entry_point_name: ''
+experiment_id: '826953352913710704'
+lifecycle_stage: active
+run_id: ad3f394f1a0448118b6d991f2297f82f
+run_name: incongruous-mink-547
+run_uuid: ad3f394f1a0448118b6d991f2297f82f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747317563973
+status: 3
+tags: []
+user_id: a0103
