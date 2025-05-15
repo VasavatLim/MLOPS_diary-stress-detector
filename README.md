@@ -122,14 +122,17 @@ Logs can be visualized on the MLflow dashboard.
 ## 📌 Sample Interface
 - Emotions and stress scores are displayed with color-coded visual feedback
 - Each emotion is assigned a unique color for better interpretation
+- A **line chart** shows how stress levels change over time.
+- A **bar chart** visualizes the frequency of each detected emotion.
+- A **statistics table** (mean, std, min, etc.) summarizes overall stress trends.
 
 ---
 
 ## 📚 Future Improvements
 - Pie chart to show emotion distribution
-- Save and track user diary history
-- Line graph showing stress trends over time
-- Support for multilingual diary inputs and model fine-tuning
+- Add **user login functionality** to allow personalized tracking.
+- Allow **parents or guardians** to view only the child's **stress score** without seeing diary text.
+- Add multilingual support for diary input and fine-tune models for better performance.
 
 ---
 
