@@ -1,0 +1,29 @@
+name: 🧪 Run CI Checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pytest flake8
+
+    - name: Run unit tests
+      run: pytest tests/
+
+    - name: Run flake8 lint check
+      run: flake8 predictor/ utils/ scripts/
