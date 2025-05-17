@@ -45,7 +45,9 @@ To ensure that the codebase is clean, tested, and working properly every time a 
 - Builds trust when working as a team
 
 ### 📎 Trigger:
-Automatic – runs on every `push` or `pull request` to the `main` branch
+- ✅ From the deployed **Streamlit app**, using the GitHub API (`workflow_dispatch`)
+- 🧑‍💻 Also supports manual execution via GitHub UI if needed
+
 
 ---
 
@@ -132,9 +134,10 @@ This project integrates a set of powerful tools for machine learning, web deploy
 
 | Tool            | Purpose |
 |------------------|---------|
-| **GitHub Actions** | Automates two workflows:
-- Diary logging via `log_diary.yml`
-- Code testing + linting via `ci.yml` |
+| **GitHub Actions** | Automates:
+- 📘 Diary logging via `log_diary.yml` (includes safe git merge config to avoid push conflicts)
+- 🧪 Code testing + linting via `ci.yml` (runs on every push or PR) |
+
 | **GITHUB_TOKEN** *(built-in)* | Used to push changes to the repo securely within workflows |
 
 ---

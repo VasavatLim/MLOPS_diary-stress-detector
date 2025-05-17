@@ -16,10 +16,12 @@ This project is a web application that predicts a user's emotional state from a 
 | **Streamlit**               | Web interface for diary input and visual feedback |
 | **Pandas**                  | CSV handling and manipulation |
 | **MLflow**                  | Logs predictions and metrics for tracking |
-| **DVC (Data Version Control)** | Tracks `diary_log.csv` across experiments |
+| **DVC (Data Version Control)** | Tracks `diary_log.csv` with versioning |
 | **GitHub Actions**          | Automates diary logging and CI testing workflows |
 | **Pytest**                  | Runs automated unit tests in CI |
 | **Flake8**                  | Enforces Python code formatting and style |
+| **Git (custom config)**     | Enables auto-merge in workflows to avoid push errors |
+
 
 ---
 
@@ -203,8 +205,9 @@ Together, these make your ML project production-ready, testable, and reproducibl
 
 ## 🔗 Workflow Files
 
-- `.github/workflows/log_diary.yml`: diary logging automation
-- `.github/workflows/ci.yml`: continuous integration (test & lint)
+- `.github/workflows/log_diary.yml`: Diary logging automation (includes safe Git pull + merge strategy)
+- `.github/workflows/ci.yml`: Continuous integration for test & lint
+
 
 ---
 
