@@ -8,6 +8,7 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
 labels = model.config.id2label
 
+
 def predict_emotion(text):
     inputs = tokenizer(text, return_tensors="pt", truncation=True)
     with torch.no_grad():
