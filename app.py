@@ -1,5 +1,3 @@
-
-
 from predictor.emotion_model import predict_emotion
 from predictor.stress_mapper import map_emotion_to_stress
 from utils.mlflow_logger import log_prediction
@@ -8,7 +6,7 @@ import os
 from datetime import datetime
 import altair as alt
 import streamlit as st
-
+import requests
 # Load the secret
 GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"]
 
@@ -17,6 +15,22 @@ headers = {
     "Authorization": f"token {GITHUB_TOKEN}",
     "Accept": "application/vnd.github+json"
 }
+
+def trigger_logging_workflow(diary_text):
+    GITHUB_API = "https://api.github.com/repos/VasavatLim/MLOPS_diary-stress-detector/actions/workflows/log_diary.yml/dispatches"
+    headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github+json"
+    }
+    payload = {
+        "ref": "main",
+        "inputs": {
+            "diary": diary_text
+        }
+    }
+
+    response = requests.post(GITHUB_API, headers=headers, json=payload)
+    return response.status_code, response.text
 
 # Set page
 st.set_page_config(
@@ -139,6 +153,13 @@ def save_to_csv(text, emotion, score, stress):
 
 # Emotional detection and making output
 if user_input:
+    status, msg = trigger_logging_workflow(user_input)
+
+    if status == 204:
+        st.success("✅ Your entry was logged successfully to GitHub!")
+    else:
+        st.error(f"❌ Failed to trigger GitHub workflow.\nStatus: {status}\nMessage: {msg}")
+
     emotion, score = predict_emotion(user_input)
     stress = map_emotion_to_stress(emotion, score)
     log_prediction(emotion, stress)
