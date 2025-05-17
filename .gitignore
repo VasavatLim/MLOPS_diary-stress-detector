@@ -1,3 +1,6 @@
 venv/
 .venv/
 cmd.txt
+
+__pycache__/
+mlruns/
