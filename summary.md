@@ -76,3 +76,77 @@ Together, they support automation, accountability, and reliability in every part
 
 ---
 
+# 🧰 Tool Summary
+
+This project integrates a set of powerful tools for machine learning, web deployment, experiment tracking, data versioning, testing, and automation. Below is a breakdown of each tool and its role in the system.
+
+---
+
+## 🧠 Machine Learning
+
+| Tool                        | Purpose |
+|-----------------------------|---------|
+| **Hugging Face Transformers** | Loads a pretrained RoBERTa model for emotion classification |
+| **Hugging Face Tokenizer** | Tokenizes diary text into input format for the model |
+| **Torch (PyTorch)**         | Runs the model inference under the hood |
+| **Numpy** *(implicit)*      | Handles array operations used in inference/calculations |
+
+---
+
+## 📊 Data Handling
+
+| Tool        | Purpose |
+|-------------|---------|
+| **Pandas**  | Reads and writes diary logs to `data/diary_log.csv` |
+| **CSV File**| Serves as the local storage for all diary log entries |
+
+---
+
+## 🧾 Experiment Tracking & Reproducibility
+
+| Tool            | Purpose |
+|------------------|---------|
+| **MLflow**       | Logs each prediction’s emotion and stress score |
+| **DVC (Data Version Control)** | Tracks changes to `diary_log.csv` and enables reproducibility across runs |
+
+---
+
+## 🌐 Web Application
+
+| Tool        | Purpose |
+|-------------|---------|
+| **Streamlit** | Provides an interactive UI for users to submit diary entries and view emotion/stress feedback visually |
+
+---
+
+## 🧪 Testing & Code Quality
+
+| Tool        | Purpose |
+|-------------|---------|
+| **Pytest**  | Runs unit tests on prediction and mapping functions |
+| **Flake8**  | Linting tool to enforce clean, consistent Python code |
+
+---
+
+## 🤖 Automation & CI/CD
+
+| Tool            | Purpose |
+|------------------|---------|
+| **GitHub Actions** | Automates two workflows:
+- Diary logging via `log_diary.yml`
+- Code testing + linting via `ci.yml` |
+| **GITHUB_TOKEN** *(built-in)* | Used to push changes to the repo securely within workflows |
+
+---
+
+## ✅ Summary
+
+This toolchain supports:
+- Robust ML inference with traceability (Transformers, MLflow, DVC)
+- Reliable web-based input/output (Streamlit)
+- Automated code validation (Pytest, Flake8, GitHub Actions)
+- Clean and reproducible workflow for long-term MLOps projects
+
+Each tool was chosen to serve a specific function in a lightweight but professional MLOps setup.
+
+---

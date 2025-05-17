@@ -12,18 +12,21 @@ This project is a web application that predicts a user's emotional state from a 
 |-----------------------------|---------|
 | **Hugging Face Transformers** | Pretrained model for emotion classification (RoBERTa-based) |
 | **Hugging Face Tokenizer** | To tokenize the text |
-| **Streamlit**               | Web interface development |
-| **MLflow**                  | Logging experiments, parameters, and metrics |
-| **DVC (Data Version Control)** | Versioning of output CSV files |
+| **Torch**                   | Runs the pretrained emotion model |
+| **Streamlit**               | Web interface for diary input and visual feedback |
 | **Pandas**                  | CSV handling and manipulation |
-| **Torch**                   | Inference with Hugging Face model |
+| **MLflow**                  | Logs predictions and metrics for tracking |
+| **DVC (Data Version Control)** | Tracks `diary_log.csv` across experiments |
+| **GitHub Actions**          | Automates diary logging and CI testing workflows |
+| **Pytest**                  | Runs automated unit tests in CI |
+| **Flake8**                  | Enforces Python code formatting and style |
 
 ---
 
 ## 📁 Project Directory Structure
 
-``` bash
-project/
+```bash
+MLOPS_diary-stress-detector/
 ├── app.py                      # Streamlit web application
 ├── predictor/
 │   ├── __init__.py
@@ -32,18 +35,27 @@ project/
 ├── utils/
 │   ├── __init__.py
 │   └── mlflow_logger.py       # Utility for logging with MLflow
+├── scripts/
+│   └── log_prediction.py      # Command-line prediction + logging tool
+├── tests/
+│   └── test_predictor.py      # Unit tests for predictor functions
 ├── data/
 │   └── diary_log.csv          # Stores diary predictions (tracked with DVC)
+├── .github/
+│   └── workflows/
+│       ├── log_diary.yml      # Manual diary entry workflow
+│       └── ci.yml             # CI workflow (pytest + flake8)
 ├── requirements.txt           # Required dependencies
+├── .flake8                    # Linting config
 └── README.md                  # Project documentation
-```
+
 ---
 ## 🛠 Installation & Run Instructions
 
 ### 1. Clone the project and set up the environment
 ```bash
-git clone https://github.zhaw.ch/kafleric/MLOPS_Project.git
-cd MLOPS_Project
+git clone https://github.com/VasavatLim/MLOPS_diary-stress-detector.git
+cd MLOPS_diary-stress-detector
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -119,47 +131,62 @@ Logs can be visualized on the MLflow dashboard.
 
 ---
 
+# 🤖 Automation Summary
+
+This project integrates two key automation workflows using **GitHub Actions** to streamline logging and maintain code quality. These workflows ensure the system remains reliable, testable, and maintainable.
+
 ---
 
-## 📦 Automation with GitHub Actions
+## 📘 Log Diary Entry Workflow
 
-This project includes a GitHub Actions workflow to automatically log diary entries and track them using DVC.
+### 🔧 What It Does:
+- Accepts a diary entry from the GitHub interface
+- Predicts the emotion and confidence using a pretrained model
+- Calculates a stress score based on the predicted emotion
+- Appends the result to `data/diary_log.csv`
+- Tracks the updated log using **DVC**
+- Commits and pushes the changes back to the repository
 
-### 🚀 Workflow Overview
+### ▶️ Trigger:
+- **Manual** (Run from GitHub Actions tab)
 
-- Takes a manually entered diary text input
-- Runs emotion and stress prediction using the model
-- Appends results to `data/diary_log.csv`
-- Tracks the CSV with DVC
-- Commits and pushes the changes back to GitHub
+### 🧠 Purpose:
+Automate the full diary logging process without requiring local script execution.
 
-### 🛠 How to Use
+---
 
-1. Go to the [**Actions tab**](https://github.com/VasavatLim/MLOPS_diary-stress-detector/actions) of this repository.
-2. Select the workflow **📘 Log Diary Entry**.
-3. Click **"Run workflow"** (top-right).
-4. Enter your diary entry (e.g., _"I feel overwhelmed by my workload."_).
-5. Click the green **"Run workflow"** button.
+## 🧪 CI Workflow (Continuous Integration)
 
-After a few seconds, the system will:
-- Run inference on your entry
-- Log the emotion and stress score to `data/diary_log.csv`
-- Version the update using DVC
-- Push changes to the repo
+### 🔧 What It Does:
+- Runs **unit tests** (`pytest`) to verify the model logic works as expected
+- Runs **code linting** (`flake8`) to ensure consistent formatting and style
 
-### 🧠 Internals
+### ▶️ Trigger:
+- **Automatic** (On every push or pull request to `main`)
 
-- The workflow is defined in: `.github/workflows/log_diary.yml`
-- It uses `PYTHONPATH=.` to support relative imports
-- The prediction is handled by: `scripts/log_prediction.py`
+### 🧠 Purpose:
+Catch bugs early, enforce good code style, and maintain a healthy codebase for collaboration.
 
-### 🔐 Permissions
+---
 
-Make sure your repository has:
-- **Actions enabled**
-- **Write permissions for GITHUB_TOKEN** under repository settings:
-  - Go to **Settings → Actions → General → Workflow permissions**
-  - Select **"Read and write permissions"**
+## ✅ Benefits of Automation
+
+- Saves time by automating manual tasks
+- Ensures code correctness and consistency
+- Reduces human error during development
+- Makes the project more reproducible and professional
+
+---
+
+## 📎 Summary
+
+| Workflow Name       | Trigger         | Main Function                             |
+|---------------------|------------------|--------------------------------------------|
+| 📘 Log Diary Entry   | Manual (GitHub UI) | Logs new diary entry with emotion & stress |
+| 🧪 CI Workflow       | On push / PR      | Tests code + checks formatting             |
+
+These two workflows form the backbone of the project's automation, combining reproducibility with reliable development practices.
+
 
 ---
 
