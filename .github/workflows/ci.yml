@@ -23,7 +23,7 @@ jobs:
         pip install pytest flake8
 
     - name: Run unit tests
-      run: pytest tests/
+      run: PYTHONPATH=. pytest tests/
 
     - name: Run flake8 lint check
       run: flake8 predictor/ utils/ scripts/
