@@ -4,3 +4,6 @@ cmd.txt
 
 __pycache__/
 mlruns/
+# Ignore all files in data/ except DVC-tracked ones
+data/*
+!data/diary_log.csv
