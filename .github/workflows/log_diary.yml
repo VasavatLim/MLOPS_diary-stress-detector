@@ -30,7 +30,7 @@ jobs:
 
     - name: ✏️ Run Diary Logging
       run: |
-        python scripts/log_prediction.py "${{ github.event.inputs.diary_text }}"
+        PYTHONPATH=. python scripts/log_prediction.py "${{ github.event.inputs.diary_text }}"
 
     - name: 📦 Track CSV with DVC
       run: |
