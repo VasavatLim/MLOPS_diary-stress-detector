@@ -132,62 +132,84 @@ Logs can be visualized on the MLflow dashboard.
 
 ---
 
-# 🤖 Automation Summary
+# 🤖 Automation with GitHub Actions
 
-This project integrates two key automation workflows using **GitHub Actions** to streamline logging and maintain code quality. These workflows ensure the system remains reliable, testable, and maintainable.
+This project includes two key automation workflows using **GitHub Actions**:
+
+- ✅ Logging diary entries automatically from the deployed Streamlit app
+- ✅ Maintaining clean, working code through continuous integration (CI)
+
+Together, these make your ML project production-ready, testable, and reproducible.
 
 ---
 
-## 📘 Log Diary Entry Workflow
+## 📘 1. Log Diary Entry Workflow
 
 ### 🔧 What It Does:
-- Accepts a diary entry from the GitHub interface
-- Predicts the emotion and confidence using a pretrained model
-- Calculates a stress score based on the predicted emotion
-- Appends the result to `data/diary_log.csv`
-- Tracks the updated log using **DVC**
-- Commits and pushes the changes back to the repository
+- Accepts a diary entry from the deployed **Streamlit app**
+- Runs a GitHub Action (`log_diary.yml`) to:
+  - Predict emotion and confidence using a pretrained model
+  - Calculate a stress score
+  - Append the result to `data/diary_log.csv`
+  - Track the updated file using **DVC**
+  - Commit and push changes to GitHub
 
-### ▶️ Trigger:
-- **Manual** (Run from GitHub Actions tab)
+### ▶️ How It’s Triggered:
+- From **Streamlit**, via GitHub API (`workflow_dispatch`)
+- Users write in the app → it calls the GitHub Action automatically
 
 ### 🧠 Purpose:
-Automate the full diary logging process without requiring local script execution.
+- Replaces the need to run `log_prediction.py` manually
+- Ensures predictions are versioned and saved without any local steps
 
 ---
 
-## 🧪 CI Workflow (Continuous Integration)
+## 🧪 2. CI Workflow (Code Testing)
 
 ### 🔧 What It Does:
-- Runs **unit tests** (`pytest`) to verify the model logic works as expected
-- Runs **code linting** (`flake8`) to ensure consistent formatting and style
+- On every **code push or pull request**, it automatically runs:
+  - ✅ `pytest` — to verify unit tests pass
+  - ✅ `flake8` — to enforce consistent coding style
 
-### ▶️ Trigger:
-- **Automatic** (On every push or pull request to `main`)
+### ▶️ How It’s Triggered:
+- Automatically on:
+  - Every `git push`
+  - Every PR to the `main` branch
 
 ### 🧠 Purpose:
-Catch bugs early, enforce good code style, and maintain a healthy codebase for collaboration.
+- Catches bugs early
+- Keeps your codebase clean and readable
+- Enforces best practices for teamwork and review
 
 ---
 
-## ✅ Benefits of Automation
+## 🧩 Summary Table
 
-- Saves time by automating manual tasks
-- Ensures code correctness and consistency
-- Reduces human error during development
-- Makes the project more reproducible and professional
+| Workflow Name        | Trigger Source           | Actions Performed                                  |
+|----------------------|---------------------------|----------------------------------------------------|
+| 📘 Log Diary Entry    | Streamlit app API call     | Logs diary input → predicts → tracks with DVC      |
+| 🧪 CI Workflow        | Git push / Pull Request    | Runs tests and lint checks on new code             |
 
 ---
 
-## 📎 Summary
+## ✅ Benefits of Using GitHub Actions
 
-| Workflow Name       | Trigger         | Main Function                             |
-|---------------------|------------------|--------------------------------------------|
-| 📘 Log Diary Entry   | Manual (GitHub UI) | Logs new diary entry with emotion & stress |
-| 🧪 CI Workflow       | On push / PR      | Tests code + checks formatting             |
+- 🔁 **Automation**: No need to run local scripts
+- 🔍 **Reliability**: Your code is tested every time it's changed
+- 🧠 **Reproducibility**: All logs and model outputs are version-controlled
+- 🚀 **Deployability**: Seamlessly integrates with cloud apps like Streamlit
 
-These two workflows form the backbone of the project's automation, combining reproducibility with reliable development practices.
+---
 
+## 🔗 Workflow Files
+
+- `.github/workflows/log_diary.yml`: diary logging automation
+- `.github/workflows/ci.yml`: continuous integration (test & lint)
+
+---
+
+💡 These workflows turn your Streamlit app into a fully operational ML system with logging, quality control, and traceability — powered by GitHub Actions.
+s
 
 ---
 
