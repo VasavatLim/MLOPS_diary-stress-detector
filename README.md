@@ -48,8 +48,9 @@ MLOPS_diary-stress-detector/
 ├── requirements.txt           # Required dependencies
 ├── .flake8                    # Linting config
 └── README.md                  # Project documentation
-
+```s
 ---
+
 ## 🛠 Installation & Run Instructions
 
 ### 1. Clone the project and set up the environment
