@@ -1,0 +1,47 @@
+name: 📘 Log Diary Entry
+
+on:
+  workflow_dispatch:
+    inputs:
+      diary_text:
+        description: 'Diary Entry'
+        required: true
+        default: "I am feeling stressed and tired today"
+
+jobs:
+  log_and_track:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v3
+      with:
+        lfs: true
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: 📦 Install Dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install dvc
+
+    - name: ✏️ Run Diary Logging
+      run: |
+        python scripts/log_prediction.py "${{ github.event.inputs.diary_text }}"
+
+    - name: 📦 Track CSV with DVC
+      run: |
+        dvc add data/diary_log.csv
+
+    - name: 📤 Commit and Push Changes
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "actions@github.com"
+        git add data/diary_log.csv.dvc .gitignore
+        git commit -m "🔁 Auto-update from GitHub Action"
+        git push
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
