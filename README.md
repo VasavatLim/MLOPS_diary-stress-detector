@@ -119,23 +119,52 @@ Logs can be visualized on the MLflow dashboard.
 
 ---
 
-## 📌 Sample Interface
-- Emotions and stress scores are displayed with color-coded visual feedback
-- Each emotion is assigned a unique color for better interpretation
-- A **line chart** shows how stress levels change over time.
-- A **bar chart** visualizes the frequency of each detected emotion.
-- A **statistics table** (mean, std, min, etc.) summarizes overall stress trends.
+---
+
+## 📦 Automation with GitHub Actions
+
+This project includes a GitHub Actions workflow to automatically log diary entries and track them using DVC.
+
+### 🚀 Workflow Overview
+
+- Takes a manually entered diary text input
+- Runs emotion and stress prediction using the model
+- Appends results to `data/diary_log.csv`
+- Tracks the CSV with DVC
+- Commits and pushes the changes back to GitHub
+
+### 🛠 How to Use
+
+1. Go to the [**Actions tab**](https://github.com/VasavatLim/MLOPS_diary-stress-detector/actions) of this repository.
+2. Select the workflow **📘 Log Diary Entry**.
+3. Click **"Run workflow"** (top-right).
+4. Enter your diary entry (e.g., _"I feel overwhelmed by my workload."_).
+5. Click the green **"Run workflow"** button.
+
+After a few seconds, the system will:
+- Run inference on your entry
+- Log the emotion and stress score to `data/diary_log.csv`
+- Version the update using DVC
+- Push changes to the repo
+
+### 🧠 Internals
+
+- The workflow is defined in: `.github/workflows/log_diary.yml`
+- It uses `PYTHONPATH=.` to support relative imports
+- The prediction is handled by: `scripts/log_prediction.py`
+
+### 🔐 Permissions
+
+Make sure your repository has:
+- **Actions enabled**
+- **Write permissions for GITHUB_TOKEN** under repository settings:
+  - Go to **Settings → Actions → General → Workflow permissions**
+  - Select **"Read and write permissions"**
 
 ---
 
-## 📚 Future Improvements
-- Pie chart to show emotion distribution
-- Add **user login functionality** to allow personalized tracking.
-- Allow **parents or guardians** to view only the child's **stress score** without seeing diary text.
-- Add multilingual support for diary input and fine-tune models for better performance.
 
----
 
 ## 🙋‍♀️ Author
-- **Sunghyun Shin,**
+- **Sunghyun Shin, Vasavat Limnanthasin**
 - MLOps Final Project — ZHAW School of Engineering
