@@ -23,11 +23,12 @@ def trigger_logging_workflow(diary_text):
         "Accept": "application/vnd.github+json"
     }
     payload = {
-        "ref": "main",
-        "inputs": {
-            "diary": diary_text
-        }
+    "ref": "main",
+    "inputs": {
+        "diary_text": diary_text  # ✅ must match the YAML
     }
+}
+
 
     response = requests.post(GITHUB_API, headers=headers, json=payload)
     return response.status_code, response.text
