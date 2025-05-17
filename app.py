@@ -1,5 +1,5 @@
 
-import streamlit as st
+
 from predictor.emotion_model import predict_emotion
 from predictor.stress_mapper import map_emotion_to_stress
 from utils.mlflow_logger import log_prediction
@@ -7,6 +7,16 @@ import pandas as pd
 import os
 from datetime import datetime
 import altair as alt
+import streamlit as st
+
+# Load the secret
+GITHUB_TOKEN = st.secrets["GITHUB_TOKEN"]
+
+# Use it, for example, in headers:
+headers = {
+    "Authorization": f"token {GITHUB_TOKEN}",
+    "Accept": "application/vnd.github+json"
+}
 
 # Set page
 st.set_page_config(
