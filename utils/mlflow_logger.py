@@ -1,5 +1,6 @@
 import mlflow
 
+
 def log_prediction(emotion, stress_score):
     mlflow.set_experiment("stress-detector")
     with mlflow.start_run():
