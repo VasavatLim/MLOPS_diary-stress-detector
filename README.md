@@ -30,8 +30,6 @@ This app helps users reflect on their feelings by analyzing diary entries and es
 | **Pytest**                  | Runs unit tests during CI |
 | **Flake8**                  | Enforces Python style and formatting |
 | **Git (custom config)**     | Enables safe auto-merge in workflows |
-rs |
-
 
 ---
 
