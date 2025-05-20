@@ -2,7 +2,8 @@
 # 📘 Stress Detection from Diary Text
 
 ## 🧠 Project Overview
-This app helps users reflect on their feelings by analyzing diary entries and estimating a stress level based on the predicted emotion. It’s built with Streamlit and designed to be easy to use—just type in a diary entry and get instant emotional insights. MLflow is used for experiment tracking, and prediction logs are saved to CSV and version-controlled with DVC.
+This app is designed to help users better understand their emotions by analyzing what they write in a diary. Just open the app, type in how you're feeling, and it will instantly predict your emotional state and give you a stress score. Behind the scenes, it uses Streamlit for the interface, MLflow to keep track of predictions, and DVC to version-control the logs, keeping everything organized and reproducible.
+
 
 ---
 
