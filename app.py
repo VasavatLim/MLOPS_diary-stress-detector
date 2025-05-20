@@ -306,7 +306,7 @@ def load_and_plot_log():
         st.markdown(""" <div class='chart-message'><img class='fire-icon' src="https://cdn-icons-png.flaticon.com/512/11280/11280633.png"/>Emotion Frequency""", unsafe_allow_html=True)
         emotion_counts = df['emotion'].value_counts()
         st.altair_chart(bar_chart, use_container_width=True)
-        
+    ##
         
 
     # Emtion stastics + summary
