@@ -43,13 +43,16 @@ jobs:
       run: |
         dvc add data/diary_log.csv
 
-    - name: 📤 Commit and Push Changes Safely
+    - name: 📤 Commit and Push CSV + DVC File
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "actions@github.com"
-        git config pull.rebase false 
-        git add data/diary_log.csv.dvc .gitignore || echo "Nothing to add"
-        git commit -m "🔁 Auto-update from GitHub Action" || echo "Nothing to commit"
+        git config pull.rebase false
+
+        # Add both .csv and .dvc files to Git
+        git add data/diary_log.csv data/diary_log.csv.dvc .gitignore || echo "Nothing to add"
+        
+        git commit -m "🔁 Auto-update CSV and DVC from GitHub Action" || echo "Nothing to commit"
         git pull origin main --no-edit || echo "No changes to pull"
         git push || echo "Push failed"
       env:
