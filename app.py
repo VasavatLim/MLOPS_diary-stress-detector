@@ -228,7 +228,7 @@ def load_and_plot_log():
     col1, col2 = st.columns(2)
     
     line_chart = alt.Chart(df).mark_line(
-    color='#FF8DAA',  # 연한 핑크
+    color='#FF8DAA',  
     strokeWidth=3
     ).encode(
         x='date:T',
