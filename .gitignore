@@ -5,7 +5,7 @@ cmd.txt
 __pycache__/
 mlruns/
 # Ignore all files in data/
-data/*
+# data/*
 
 # EXCEPTIONS for files we want to track
 !data/diary_log.csv
