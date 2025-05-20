@@ -42,8 +42,6 @@ jobs:
     - name: 📦 Track CSV with DVC
       run: |
         dvc add data/diary_log.csv
-        # Remove DVC-added line from .gitignore so Git can also track it
-        sed -i '/^data\/diary_log\.csv$/d' .gitignore
 
     - name: 📤 Commit and Push CSV + DVC File
       run: |
