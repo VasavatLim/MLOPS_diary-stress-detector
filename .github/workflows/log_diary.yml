@@ -41,7 +41,7 @@ jobs:
 
     - name: 📦 Track CSV with DVC
       run: |
-        dvc add data/diary_log.csv
+        dvc add --no-gitignore data/diary_log.csv
 
     - name: 📤 Commit and Push CSV + DVC File
       run: |
