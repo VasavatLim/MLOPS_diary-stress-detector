@@ -32,6 +32,13 @@ jobs:
       run: |
         PYTHONPATH=. python scripts/log_prediction.py "${{ github.event.inputs.diary_text }}"
 
+    - name: 🧠 Check for Merge Conflict in DVC File
+      run: |
+        if grep -q "<<<<<<<" data/diary_log.csv.dvc; then
+          echo "❌ Merge conflict detected in data/diary_log.csv.dvc. Please resolve manually."
+          exit 1
+        fi
+
     - name: 📦 Track CSV with DVC
       run: |
         dvc add data/diary_log.csv
@@ -41,13 +48,9 @@ jobs:
         git config --global user.name "github-actions"
         git config --global user.email "actions@github.com"
         git config pull.rebase false 
-        git add data/diary_log.csv.dvc .gitignore
+        git add data/diary_log.csv.dvc .gitignore || echo "Nothing to add"
         git commit -m "🔁 Auto-update from GitHub Action" || echo "Nothing to commit"
-        git pull origin main --no-edit
-        git push
-
-
-
-
+        git pull origin main --no-edit || echo "No changes to pull"
+        git push || echo "Push failed"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
