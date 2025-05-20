@@ -307,7 +307,7 @@ def load_and_plot_log():
         emotion_counts = df['emotion'].value_counts()
         st.altair_chart(bar_chart, use_container_width=True)
     
-
+###
     # Emtion stastics + summary
     st.markdown(""" <div class='chart-message'><img class='fire-icon' src="https://cdn-icons-png.flaticon.com/512/11280/11280633.png"/>Emotion Statistics</div>""", unsafe_allow_html=True)
 
