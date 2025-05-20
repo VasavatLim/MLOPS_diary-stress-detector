@@ -2,25 +2,35 @@
 # 📘 Stress Detection from Diary Text
 
 ## 🧠 Project Overview
-This project is a web application that predicts a user's emotional state from a diary entry and estimates their stress score based on the emotion. Built with Streamlit, it provides an intuitive UI where users enter diary text and view visual results. MLflow is used for experiment tracking, and prediction logs are saved to CSV and version-controlled with DVC.
+This app helps users reflect on their feelings by analyzing diary entries and estimating a stress level based on the predicted emotion. It’s built with Streamlit and designed to be easy to use—just type in a diary entry and get instant emotional insights. MLflow is used for experiment tracking, and prediction logs are saved to CSV and version-controlled with DVC.
 
 ---
 
-## 🔧 Tools and Technologies Used
+## 🔧 Tools & Technologies
+
+### 🧪 Tools from MLOps Lab Series
 
 | Tool                        | Purpose |
 |-----------------------------|---------|
-| **Hugging Face Transformers** | Pretrained model for emotion classification (RoBERTa-based) |
-| **Hugging Face Tokenizer** | To tokenize the text |
-| **Torch**                   | Runs the pretrained emotion model |
-| **Streamlit**               | Web interface for diary input and visual feedback |
-| **Pandas**                  | CSV handling and manipulation |
-| **MLflow**                  | Logs predictions and metrics for tracking |
-| **DVC (Data Version Control)** | Tracks `diary_log.csv` with versioning |
-| **GitHub Actions**          | Automates diary logging and CI testing workflows |
-| **Pytest**                  | Runs automated unit tests in CI |
-| **Flake8**                  | Enforces Python code formatting and style |
-| **Git (custom config)**     | Enables auto-merge in workflows to avoid push errors |
+| **🤗 Transformers**         | RoBERTa-based emotion classification |
+| **Streamlit**               | Frontend UI for diary input and feedback  |
+| **MLflow**                  | Logs model predictions and metrics  |
+| **DVC (Data Version Control)** | Tracks and versions `diary_log.csv`  |
+| **GitHub Actions**          | Automates diary logging and CI workflows  |
+
+---
+
+### 🛠 Other Technologies
+
+| Technology                  | Purpose |
+|-----------------------------|---------|
+| **PyTorch**                 | Backend for running the emotion model |
+| **Hugging Face Tokenizer** | Converts text into model-friendly tokens |
+| **Pandas**                  | Handles CSV data operations |
+| **Pytest**                  | Runs unit tests during CI |
+| **Flake8**                  | Enforces Python style and formatting |
+| **Git (custom config)**     | Enables safe auto-merge in workflows |
+rs |
 
 
 ---
@@ -40,7 +50,8 @@ MLOPS_diary-stress-detector/
 ├── scripts/
 │   └── log_prediction.py      # Command-line prediction + logging tool
 ├── tests/
-│   └── test_predictor.py      # Unit tests for predictor functions
+│   ├── test_predictor.py      # Unit tests for predictor functions
+│   └── .flake8                # Linting config
 ├── data/
 │   └── diary_log.csv          # Stores diary predictions (tracked with DVC)
 ├── .github/
@@ -48,7 +59,6 @@ MLOPS_diary-stress-detector/
 │       ├── log_diary.yml      # Manual diary entry workflow
 │       └── ci.yml             # CI workflow (pytest + flake8)
 ├── requirements.txt           # Required dependencies
-├── .flake8                    # Linting config
 └── README.md                  # Project documentation
 ```
 ---
@@ -208,11 +218,6 @@ Together, these make your ML project production-ready, testable, and reproducibl
 - `.github/workflows/log_diary.yml`: Diary logging automation (includes safe Git pull + merge strategy)
 - `.github/workflows/ci.yml`: Continuous integration for test & lint
 
-
----
-
-💡 These workflows turn your Streamlit app into a fully operational ML system with logging, quality control, and traceability — powered by GitHub Actions.
-s
 
 ---
 
