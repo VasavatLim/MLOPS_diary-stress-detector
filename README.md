@@ -4,6 +4,9 @@
 ## 🧠 Project Overview
 This app is designed to help users better understand their emotions by analyzing what they write in a diary. Just open the app, type in how you're feeling, and it will instantly predict your emotional state and give you a stress score. Behind the scenes, it uses Streamlit for the interface, MLflow to keep track of predictions, and DVC to version-control the logs, keeping everything organized and reproducible.
 
+## 📁 Project Directory Structure
+
+```bash
 MLOPS_diary-stress-detector/
 ├── app.py                      # Streamlit web application
 ├── predictor/
@@ -26,6 +29,7 @@ MLOPS_diary-stress-detector/
 │       └── ci.yml              # CI workflow (pytest + flake8)
 ├── requirements.txt            # Required dependencies
 └── README.md                   # Project documentation
+```
 
 ---
 
