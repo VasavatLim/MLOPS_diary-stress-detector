@@ -155,56 +155,41 @@ Together, these make your ML project production-ready, testable, and reproducibl
 
 ## 📘 1. Log Diary Entry Workflow
 
-This workflow automatically handles diary entries submitted from the **Streamlit app**, turning them into structured, versioned logs.
+### 🔧 What It Does:
+- Accepts a diary entry from the deployed **Streamlit app**
+- Runs a GitHub Action (`log_diary.yml`) to:
+  - Predict emotion and confidence using a pretrained model
+  - Calculate a stress score
+  - Append the result to `data/diary_log.csv`
+  - Track the updated file using **DVC**
+  - Commit and push changes to GitHub
 
-### 🛠 How It Works – Step by Step
+### ▶️ How It’s Triggered:
+- From **Streamlit**, via GitHub API (`workflow_dispatch`)
+- Users write in the app → it calls the GitHub Action automatically
 
-**1. User submits a diary entry in the app**  
-They write their thoughts in the Streamlit interface and hit submit.
-
-**2. The app triggers a GitHub Action**  
-Using the GitHub API (`workflow_dispatch`), the app starts the `log_diary.yml` workflow.
-
-**3. The GitHub Action processes the entry**  
-It runs the emotion prediction model, calculates the stress score, and appends the result to `data/diary_log.csv`.
-
-**4. DVC tracks the updated log**  
-The changed CSV is versioned using **DVC**, so you can reproduce or roll back experiments later.
-
-**5. Changes are committed and pushed**  
-The updated log file is automatically committed and pushed back to the GitHub repository—no manual steps required.
-
-### 🎯 Why This Matters
-
-- You don’t need to run `log_prediction.py` or update the CSV manually  
-- All predictions are version-controlled, tracked, and reproducible  
-- It makes the logging process feel invisible to the user—but fully automated for the team
-
+### 🧠 Purpose:
+- Replaces the need to run `log_prediction.py` manually
+- Ensures predictions are versioned and saved without any local steps
 
 ---
 
 ## 🧪 2. CI Workflow (Code Testing)
 
-This workflow helps keep the project clean, functional, and reliable by testing and linting the code automatically.
+### 🔧 What It Does:
+- On every **code push or pull request**, it automatically runs:
+  - ✅ `pytest` — to verify unit tests pass
+  - ✅ `flake8` — to enforce consistent coding style
 
-### 🛠 How It Works – Step by Step
+### ▶️ How It’s Triggered:
+- Automatically on:
+  - Every `git push`
+  - Every PR to the `main` branch
 
-**1. You push code or open a pull request**  
-Any time you make changes and push to the repo (or open a PR to `main`), the workflow kicks in.
-
-**2. GitHub Actions runs checks automatically**  
-It runs two important tools to keep the codebase healthy:
-- ✅ `pytest` — runs all unit tests to make sure nothing is broken
-- ✅ `flake8` — checks for formatting and style issues
-
-**3. Get immediate feedback**  
-If something fails, GitHub will let you know exactly where and why—so you can fix it right away.
-
-### 🎯 Why This Matters
-
-- Helps you catch bugs before they make it into `main`  
-- Keeps code consistent and easy for others to read  
-- Encourages best practices and makes collaboration smoother
+### 🧠 Purpose:
+- Catches bugs early
+- Keeps your codebase clean and readable
+- Enforces best practices for teamwork and review
 
 ---
 
