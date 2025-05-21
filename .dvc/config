@@ -2,4 +2,5 @@
     remote = gdrive-remote
 ['remote "gdrive-remote"']
     url = gdrive://1NMWlYDQV13rYirQiksOY8ufe57Uoj33F
-    gdrive_use_service_account = false
+    gdrive_use_service_account = true
+    gdrive_service_account_json_file_path = C:/Users/Gram/Desktop/mlops_proj/MLOPS_Project/keys/dvc.json

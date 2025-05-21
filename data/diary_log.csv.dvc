@@ -1,5 +1,10 @@
 outs:
+<<<<<<< HEAD
 - md5: 11c55ee30f1ed4ba15e9b14693c84871
   size: 81
+=======
+- md5: 7fecb3898f416add97b7461725a7f031
+  size: 63
+>>>>>>> 8feb64d25924fc4c447a307ee91dfdcd943089e5
   hash: md5
   path: diary_log.csv

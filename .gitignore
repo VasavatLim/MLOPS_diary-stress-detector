@@ -10,3 +10,4 @@ data/*
 # EXCEPTIONS for files we want to track
 !data/diary_log.csv
 !data/diary_log.csv.dvc
+keys/
