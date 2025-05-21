@@ -60,34 +60,6 @@ MLOPS_diary-stress-detector/
 
 ---
 
-## 📁 Project Directory Structure
-
-```bash
-MLOPS_diary-stress-detector/
-├── app.py                      # Streamlit web application
-├── predictor/
-│   ├── __init__.py
-│   ├── emotion_model.py       # Loads Hugging Face model and predicts emotions
-│   └── stress_mapper.py       # Maps emotion to stress score
-├── utils/
-│   ├── __init__.py
-│   └── mlflow_logger.py       # Utility for logging with MLflow
-├── scripts/
-│   └── log_prediction.py      # Command-line prediction + logging tool
-├── tests/
-│   ├── test_predictor.py      # Unit tests for predictor functions
-│   └── .flake8                # Linting config
-├── data/
-│   └── diary_log.csv          # Stores diary predictions (tracked with DVC)
-├── .github/
-│   └── workflows/
-│       ├── log_diary.yml      # Manual diary entry workflow
-│       └── ci.yml             # CI workflow (pytest + flake8)
-├── requirements.txt           # Required dependencies
-└── README.md                  # Project documentation
-```
----
-
 ## 🛠 Installation & Run Instructions
 
 ### 1. Clone the project and set up the environment
