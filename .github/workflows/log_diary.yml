@@ -55,5 +55,14 @@ jobs:
         git commit -m "🔁 Auto-update CSV and DVC from GitHub Action" || echo "Nothing to commit"
         git pull origin main --no-edit || echo "No changes to pull"
         git push || echo "Push failed"
+
+    - name: ☁️ Push to DVC Remote
+      run: |
+        echo "${{ secrets.DVC_GDRIVE_KEY }}" > dvc.json
+        dvc remote modify gdrive-remote gdrive_use_service_account true
+        dvc remote modify gdrive-remote gdrive_service_account_json_file_path dvc.json
+        dvc push
+
+
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
