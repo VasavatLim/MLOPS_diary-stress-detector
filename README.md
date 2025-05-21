@@ -70,6 +70,18 @@ python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
+### ⚠️ Important: If You Cloned the Repository
+
+If you cloned this repository, the `data/diary_log.csv` file is tracked using DVC and not stored in Git. You must either:
+
+1. **Download the file manually** from our shared DVC storage:
+   [📂 Google Drive – diary_log.csv](https://drive.google.com/drive/folders/1NMWlYDQV13rYirQiksOY8ufe57Uoj33F?usp=sharing)
+   
+   Then, place it in the `data/` directory:
+
+   ```bash
+   mv ~/Downloads/diary_log.csv data/diary_log.csv
+
 
 ### 2. Initialize DVC and track the CSV
 ```bash
